@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title></title>
+
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css"/>
+    <link rel="stylesheet" href="./style/myweui.css"/>
+
+    <style type="text/css">
+        .hide, .init_state {
+            display: none;
+        }
+        .guide_step li space:not(:last-child) {
+            display: none;
+        }
+        /*.weui-media-box {*/
+            /*padding-top: 18px;*/
+            /*padding-bottom: 18px;*/
+        /*}*/
+        .weui-media-box_appmsg .weui-media-box__thumb {
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page js_show" id="page_loading">
+        <div class="page__bd page__bd_spacing" style="padding-top: 80px;">
+            <div class="weui-loadmore eo-weui-loadmore">
+                <i class="weui-loading"></i>
+                <span class="weui-loadmore__tips">正在加载，请稍后...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page js_show init_state" id="page_warning">
+        <div class="page__bd page__bd_spacing" style="padding-top: 80px;">
+            <div class="icon-box eo-icon-box">
+                <i class="weui-icon-warn weui-icon_msg-primary"></i>
+                <div class="icon-box__ctn">
+                    <h3 class="icon-box__title"></h3>
+                    <p class="icon-box__desc"></p>
+                </div>
+            </div>
+
+            <div class="buttons_panel" style="margin-top: 40px;">
+                <a href="javascript:;" class="weui-btn weui-btn_primary btn_exit">后退</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="page_airkiss_guider" class="init_state">
+        <div class="weui-cells__title">配置设备上网前请确认已完成以下准备</div>
+        <ul class="guide_step" id="airkiss_guider">
+            <li class="template hide">
+                <div class="weui-flex">
+                    <label></label>
+                    <span class="weui-flex__item"></span>
+                </div>
+                <space></space>
+            </li>
+        </ul>
+
+        <div class="buttons_panel">
+            <a href="javascript:;" class="weui-btn weui-btn_primary weui-btn_disabled wechat-jsapi" id="open_airkiss">配置设备上网</a>
+            <a href="javascript:;" class="weui-btn weui-btn_default weui-btn_disabled wechat-jsapi" id="scan_device">设备已联网，跳过此步</a>
+        </div>
+    </div>
+
+    <div id="page_scan_device" class="init_state" style="padding-top: 20px">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__bd">
+
+                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg hide" id="device_template">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="" alt="">
+                    </div>
+                    <div class="weui-media-box__bd weui-cell_access">
+                        <h4 class="weui-media-box__title"></h4>
+                        <p class="weui-media-box__desc"></p>
+                    </div>
+                    <div class="weui-cell_access"><span class="weui-cell__ft"></span></div>
+                </a>
+                <div id="device_list">
+
+                </div>
+                <div href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb"  src="img/tail-spin.svg" alt="" style="fill: red;">
+                    </div>
+                    <div class="weui-media-box__bd weui-cell_access">
+                            <h4 class="weui-media-box__title" style="color: #999;">正在搜索可添加的设备</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title" style="color: #576b95">若搜索不到要添加的设备，请尝试再次<a style="color: #009688" onclick="window.history.back()">配置设备上网</a></div>
+    </div>
+
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="http://public.hi-flying.com/static/js/zepto.min.js"></script>
+    <script type="text/javascript" src="http://public.hi-flying.com/static/js/base64.min.js"></script>
+    <script type="text/javascript" src="./js/config.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/device/airkiss.js?v=2"></script>
+</body>
+</html>
